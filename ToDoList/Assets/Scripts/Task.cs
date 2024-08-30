@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Task : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private string title;
+    private string description;
+    [SerializeField]
+    private TaskUIManager uiManager;
+
+    public void SetTask(string newTitle, string newDescription)
     {
-        
+        title = newTitle;
+        description = newDescription;
+        uiManager.SetText(title, description);
     }
 }
