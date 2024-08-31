@@ -61,8 +61,6 @@ sysinfo.txt
 *.unitypackage
 *.app
 
-*.shader linguist-detectable=false
-*.cginc linguist-detectable=false
 
 # Crashlytics generated file
 crashlytics-build.properties
