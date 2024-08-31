@@ -15,6 +15,9 @@ public class TaskUIManager : MonoBehaviour, IPointerClickHandler
     private TMP_Text descriptionText;
 
     [SerializeField]
+    private TMP_Text categoryText;
+
+    [SerializeField]
     private Button deleteButton;
 
     [SerializeField]
@@ -65,9 +68,10 @@ public class TaskUIManager : MonoBehaviour, IPointerClickHandler
         Destroy(gameObject);
     }
 
-    public void SetText(string title, string description)
+    public void SetText(string title, string description, string category)
     {
         this.titleText.text = title;
         this.descriptionText.text = description;
+        this.categoryText.text = category;
     }
 }

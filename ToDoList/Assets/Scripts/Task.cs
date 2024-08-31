@@ -9,11 +9,13 @@ public class Task : MonoBehaviour
 
     public string Title { get; private set; }
     public string Description { get; private set; }
+    public string Category { get; private set; }
 
-    public void SetTask(string newTitle, string newDescription)
+    public void SetTask(string newTitle, string newDescription, string newcategory)
     {
         Title = newTitle;
         Description = newDescription;
-        uiManager?.SetText(Title, Description);
+        Category = newcategory;
+        uiManager?.SetText(Title, Description, Category);
     }
 }

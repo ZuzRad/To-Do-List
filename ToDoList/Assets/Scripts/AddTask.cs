@@ -10,12 +10,17 @@ public class AddTask : MonoBehaviour
 {
     [SerializeField]
     private Button addButton;
+
     [SerializeField]
     private TMP_Text titleInput;
+
     [SerializeField]
     private TMP_Text desInput;
 
-    public event Action<string, string> OnTaskAdded;
+    [SerializeField]
+    private TMP_Dropdown categoryInput;
+
+    public event Action<string, string, string> OnTaskAdded;
 
     private void Start()
     {
@@ -26,7 +31,8 @@ public class AddTask : MonoBehaviour
     {
         string title = titleInput.text;
         string description = desInput.text;
+        string category = categoryInput.options[categoryInput.value].text;
 
-        OnTaskAdded?.Invoke(title, description);
+        OnTaskAdded?.Invoke(title, description, category);
     }
 }

@@ -6,7 +6,8 @@ public class DragTask : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 {
     [SerializeField]
     private Image image;
-    [HideInInspector] public Transform parentAfterDrag;
+
+    public Transform parentAfterDrag {private get; set; }
 
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
