@@ -10,8 +10,10 @@ public class TaskUIManager : MonoBehaviour, IPointerClickHandler
     [Header("UI components")]
     [SerializeField]
     private TMP_Text titleText;
+
     [SerializeField]
     private TMP_Text descriptionText;
+
     [SerializeField]
     private Button deleteButton;
 

@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Linq;
 
 public class SearchTask : MonoBehaviour
 {
@@ -12,11 +13,14 @@ public class SearchTask : MonoBehaviour
     private Button searchButton;
 
     [SerializeField]
-    private TMP_Text searchInput;
+    private TMP_InputField searchInput;
 
-    public List<Task> listToSearch = new List<Task>();
+    [SerializeField]
+    private Toggle descriptionToggle;
 
-    public List<int> indexesToHide = new List<int>();
+    private List<Task> listToSearch = new List<Task>();
+
+    private List<int> indexesToHide = new List<int>();
 
     public event Action<List<int>> OnTaskSearch;
 
@@ -34,18 +38,16 @@ public class SearchTask : MonoBehaviour
     {
         string searchText = searchInput.text.Trim().ToLower();
         indexesToHide.Clear();
-        if (searchText != "")
+        if (!string.IsNullOrEmpty(searchText))
         {
-            for (int i = 0; i < listToSearch.Count; i++)
-            {
-                Task task = listToSearch[i];
-                if (!task.Title.ToLower().Contains(searchText))
-                {
-                    indexesToHide.Add(i);
-                }
-            }
+            indexesToHide = listToSearch
+                .Select((task, index) => new { task, index })
+                .Where(item =>
+                    item.task.Title.Trim().ToLower().IndexOf(searchText) == -1 &&
+                    (!descriptionToggle.isOn || item.task.Description.Trim().ToLower().IndexOf(searchText) == -1))
+                .Select(item => item.index)
+                .ToList();
         }
-
 
         OnTaskSearch?.Invoke(indexesToHide);
     }

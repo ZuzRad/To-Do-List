@@ -7,10 +7,14 @@ public class ListPanel : MonoBehaviour, IDropHandler
 {
     [SerializeField]
     private Transform child;
+
     public void OnDrop(PointerEventData eventData)
     {
         GameObject dropped = eventData.pointerDrag;
         DragTask dragTask = dropped.GetComponent<DragTask>();
-        dragTask.parentAfterDrag = child;
+        if (dragTask)
+        {
+            dragTask.parentAfterDrag = child;
+        }
     }
 }

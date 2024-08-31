@@ -17,7 +17,7 @@ public class ListManager : MonoBehaviour
     [SerializeField]
     private Transform taskListParent;
 
-    public List<GameObject> listToSearch = new List<GameObject>();
+    private List<GameObject> listToSearch = new List<GameObject>();
 
     private void OnEnable()
     {
