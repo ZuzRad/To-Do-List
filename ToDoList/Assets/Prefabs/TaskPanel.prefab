@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -227.56691, y: 0}
-  m_SizeDelta: {x: 262.5068, y: 100}
+  m_AnchoredPosition: {x: -244.83058, y: 0}
+  m_SizeDelta: {x: 297.0341, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3348884484777284313
 CanvasRenderer:
@@ -260,7 +260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 290153529420693242}
-  parentAfterDrag: {fileID: 0}
 --- !u!225 &7814959294548204069
 CanvasGroup:
   m_ObjectHideFlags: 0
