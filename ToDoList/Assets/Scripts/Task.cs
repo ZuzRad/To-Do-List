@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Task : MonoBehaviour
 {
-
-    private string title;
-    private string description;
     [SerializeField]
     private TaskUIManager uiManager;
 
+    public string Title { get; private set; }
+    public string Description { get; private set; }
+
     public void SetTask(string newTitle, string newDescription)
     {
-        title = newTitle;
-        description = newDescription;
-        uiManager.SetText(title, description);
+        Title = newTitle;
+        Description = newDescription;
+        uiManager?.SetText(Title, Description);
     }
 }
