@@ -53,7 +53,9 @@ public class ListManager : MonoBehaviour
         GameObject newTaskObject = Instantiate(taskPrefab, taskListParent);
 
         Task newTask = newTaskObject.GetComponent<Task>();
+
         newTask.SetTask(title, description, newcategory);
+
         newTask.OnTaskDelete += DeleteTaskFromList;
 
         listToSearch.Add(newTask);

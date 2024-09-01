@@ -26,9 +26,13 @@ public class TaskUIManager : MonoBehaviour, IPointerClickHandler
 
     private RectTransform rectTransform;
     private bool isExpanded = false;
+    private Task task;
 
-
-    public event Action<Task> OnTaskDelete;
+    public void Initialize(Task task)
+    {
+        this.task = task;
+        SetText(task.Title, task.Description, task.Category);
+    }
 
     private void Start()
     {
@@ -48,19 +52,12 @@ public class TaskUIManager : MonoBehaviour, IPointerClickHandler
 
     private void ToggleExpand()
     {
-        if (isExpanded)
-        {
-            ToggleDescription(100);
-        }
-        else
-        {
-            ToggleDescription(200);
-        }
+        ToggleDescription(isExpanded ? 100 : 200);
 
         isExpanded = !isExpanded;
     }
 
-    private void ToggleDescription(uint height)
+    private void ToggleDescription(int height)
     {
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, height);
         descriptionGO.SetActive(!isExpanded);
@@ -69,7 +66,7 @@ public class TaskUIManager : MonoBehaviour, IPointerClickHandler
 
     private void DeleteTask()
     {
-        OnTaskDelete?.Invoke(GetComponent<Task>());
+        task.Delete();
         Destroy(gameObject);
     }
 
