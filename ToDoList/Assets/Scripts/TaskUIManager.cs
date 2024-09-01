@@ -67,7 +67,6 @@ public class TaskUIManager : MonoBehaviour, IPointerClickHandler
     private void DeleteTask()
     {
         task.Delete();
-        Destroy(gameObject);
     }
 
     public void SetText(string title, string description, string category)

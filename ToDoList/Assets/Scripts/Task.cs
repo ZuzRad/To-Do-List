@@ -17,6 +17,7 @@ public class Task : MonoBehaviour
         Title = newTitle;
         Description = newDescription;
         Category = newcategory;
+
         TaskUIManager taskUIManager = GetComponent<TaskUIManager>();
         taskUIManager.Initialize(this);
     }
@@ -24,5 +25,6 @@ public class Task : MonoBehaviour
     public void Delete()
     {
         OnTaskDelete?.Invoke(this);
+        Destroy(gameObject);
     }
 }

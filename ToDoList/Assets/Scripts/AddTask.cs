@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 public class AddTask : MonoBehaviour
 {
+    [Header("UI components")]
     [SerializeField]
     private Button addButton;
 

@@ -7,21 +7,21 @@ public class ListManager : MonoBehaviour
 {
     public static ListManager Instance { get; private set; }
 
-    [Header("UI components")]
+    [Header("References to other scripts")]
     [SerializeField]
     private AddTask addTaskRef;
 
     [SerializeField]
     private SearchTask searchTaskRef;
 
+    [Header("Task prefab settings")]
     [SerializeField]
     private GameObject taskPrefab;
 
     [SerializeField]
     private Transform taskListParent;
 
-    private List<Task> listToSearch = new();
-
+    private List<Task> tasksList = new();
 
     private void Awake()
     {
@@ -58,27 +58,27 @@ public class ListManager : MonoBehaviour
 
         newTask.OnTaskDelete += DeleteTaskFromList;
 
-        listToSearch.Add(newTask);
+        tasksList.Add(newTask);
         searchTaskRef.AddTaskToSearch(newTask);
     }
 
     private void DeleteTaskFromList(Task task)
     {
         searchTaskRef.DeleteTaskFromList(task);
-        listToSearch.Remove(task);
+        tasksList.Remove(task);
         task.OnTaskDelete -= DeleteTaskFromList;
     }
 
     private void HideTasks(List<int> indexes)
     {
-        foreach (Task task in listToSearch)
+        foreach (Task task in tasksList)
         {
             task.gameObject.SetActive(true);
         }
 
         foreach (int index in indexes)
         {
-            Task task = listToSearch[index];
+            Task task = tasksList[index];
             task.gameObject.SetActive(false);
         }
     }
