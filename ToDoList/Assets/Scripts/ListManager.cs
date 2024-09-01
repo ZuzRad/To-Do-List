@@ -20,7 +20,7 @@ public class ListManager : MonoBehaviour
     [SerializeField]
     private Transform taskListParent;
 
-    private List<GameObject> listToSearch = new List<GameObject>();
+    private List<Task> listToSearch = new();
 
 
     private void Awake()
@@ -51,25 +51,33 @@ public class ListManager : MonoBehaviour
     private void CreateNewTask(string title, string description, string newcategory)
     {
         GameObject newTaskObject = Instantiate(taskPrefab, taskListParent);
-        listToSearch.Add(newTaskObject);
 
         Task newTask = newTaskObject.GetComponent<Task>();
         newTask.SetTask(title, description, newcategory);
+        newTask.OnTaskDelete += DeleteTaskFromList;
 
+        listToSearch.Add(newTask);
         searchTaskRef.AddTaskToSearch(newTask);
+    }
+
+    private void DeleteTaskFromList(Task task)
+    {
+        searchTaskRef.DeleteTaskFromList(task);
+        listToSearch.Remove(task);
+        task.OnTaskDelete -= DeleteTaskFromList;
     }
 
     private void HideTasks(List<int> indexes)
     {
-        foreach (GameObject task in listToSearch)
+        foreach (Task task in listToSearch)
         {
-            task.SetActive(true);
+            task.gameObject.SetActive(true);
         }
 
         foreach (int index in indexes)
         {
-            GameObject task = listToSearch[index];
-            task.SetActive(false);
+            Task task = listToSearch[index];
+            task.gameObject.SetActive(false);
         }
     }
 }

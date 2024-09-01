@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,9 @@ public class TaskUIManager : MonoBehaviour, IPointerClickHandler
 
     private RectTransform rectTransform;
     private bool isExpanded = false;
+
+
+    public event Action<Task> OnTaskDelete;
 
     private void Start()
     {
@@ -65,6 +69,7 @@ public class TaskUIManager : MonoBehaviour, IPointerClickHandler
 
     private void DeleteTask()
     {
+        OnTaskDelete?.Invoke(GetComponent<Task>());
         Destroy(gameObject);
     }
 

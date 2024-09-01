@@ -18,9 +18,9 @@ public class SearchTask : MonoBehaviour
     [SerializeField]
     private Toggle descriptionToggle;
 
-    private List<Task> listToSearch = new List<Task>();
+    private List<Task> listToSearch = new();
 
-    private List<int> indexesToHide = new List<int>();
+    private List<int> indexesToHide = new();
 
     public event Action<List<int>> OnTaskSearch;
 
@@ -50,5 +50,10 @@ public class SearchTask : MonoBehaviour
         }
 
         OnTaskSearch?.Invoke(indexesToHide);
+    }
+
+    public void DeleteTaskFromList(Task task)
+    {
+        listToSearch.Remove(task);
     }
 }
