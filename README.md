@@ -11,6 +11,7 @@
 * [Project Status](#-project-status)
 
 ## 📝 General Information
+This project is a versatile "To Do List" application designed to help users manage their tasks. It provides an intuitive interface where users can create, organize, and track their tasks across different categories. The application supports basic task management functionalities, such as adding tasks with titles and descriptions, moving tasks between "To Do" and "Done" lists, and deleting tasks. Additionally, users can categorize their tasks for better organization and create new categories as needed. The application also includes search functionality to quickly locate tasks based on their titles or descriptions.
 
 ## ✨ Game Features
 The project includes the following features:
